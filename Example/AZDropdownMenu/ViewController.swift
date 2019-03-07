@@ -40,26 +40,26 @@ class ViewController: UIViewController {
     func buildButton(_ title: String) -> UIButton {
         let button = UIButton(type: .system)
         button.backgroundColor = UIColor(red: 80/255, green: 70/255, blue: 66/255, alpha: 1.0)
-        button.setTitle(title, for: UIControlState())
+        button.setTitle(title, for: UIControl.State())
         button.layer.cornerRadius = 4.0
-        button.setTitleColor(UIColor(red: 233/255, green: 205/255, blue: 193/255, alpha: 1.0), for: UIControlState())
+        button.setTitleColor(UIColor(red: 233/255, green: 205/255, blue: 193/255, alpha: 1.0), for: UIControl.State())
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }
 
-    func onDemo1Tapped() {
+    @objc func onDemo1Tapped() {
         let controller = DemoViewController1()
         let nv = UINavigationController(rootViewController: controller)
         nv.navigationBar.isTranslucent = false
-        nv.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         self.present(nv, animated: true, completion: nil)
     }
 
-    func onDemo2Tapped() {
+    @objc func onDemo2Tapped() {
         let controller = DemoViewController2()
         let nv = UINavigationController(rootViewController: controller)
         nv.navigationBar.isTranslucent = false
-        nv.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.black]
+        nv.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         self.present(nv, animated: true, completion: nil)
     }
 
@@ -89,7 +89,7 @@ class DemoViewController1: UIViewController {
         rightMenu = buildDummyDefaultMenu()
     }
 
-    func showRightDropdown() {
+    @objc func showRightDropdown() {
         if self.rightMenu?.isDescendant(of: self.view) == true {
             self.rightMenu?.hideMenu()
         } else {
@@ -220,7 +220,7 @@ extension UIViewController {
         return dataSource
     }
 
-    func dismissFromController() {
+    @objc func dismissFromController() {
         self.dismiss(animated: true, completion: nil)
     }
 }
